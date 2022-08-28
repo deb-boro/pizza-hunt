@@ -32,7 +32,7 @@ const pizzaController = {
       .catch((err) => res.status(400).json(err))
   },
   // update pizza by id
-  updatePizza({ params, body }, res) {
+  updatePizzaById({ params, body }, res) {
     Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true })
       .then((dbPizzaData) => {
         if (!dbPizzaData) {
