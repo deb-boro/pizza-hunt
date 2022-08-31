@@ -3,16 +3,18 @@ const dateFormat = require('../utils/dateFormat')
 
 const ReplySchema = new Schema(
   {
+    // set custom id to avoid confusion with parent comment _id
     replyId: {
       type: Schema.Types.ObjectId,
       default: () => new Types.ObjectId(),
     },
     replyBody: {
       type: String,
+      required: true,
     },
-
     writtenBy: {
       type: String,
+      required: true,
     },
     createdAt: {
       type: Date,
@@ -20,7 +22,6 @@ const ReplySchema = new Schema(
       get: (createdAtVal) => dateFormat(createdAtVal),
     },
   },
-
   {
     toJSON: {
       getters: true,
